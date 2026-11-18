@@ -9,27 +9,40 @@
 
 
 def two_sum(nums, target):
-    # Outline (write your plan here first):
-    #   ...
-    # TODO: return the indices [i, j] (i < j) of the two numbers in `nums` that add up
-    #   to `target`. Assume there is exactly one answer.
-    pass
+    #  loop through the array using nested for loops, search for the two numbers that will add of to target by testing every instance of the loop, create addition sentence
+   
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums [j] ==target:
+                return[i,j]
 
 
 def max_profit(prices):
-    # Outline:
-    #   ...
-    # TODO: `prices[i]` is a stock price on day i. Return the most profit obtainable by
-    #   buying on one day and selling on a LATER day. If no profit is possible, return 0.
-    pass
+    #   loop through the array to find the lowest number, if not found return 0, if found search for the biggest number after the smallest index, once found return biggest take away smallest
+   if not prices:
+        return 0
 
+   lowest = prices[0]
+   best_profit = 0
+   
+   for price in prices:
+        if price < lowest:
+            lowest = price
+        elif price - lowest > best_profit:
+            best_profit = price - lowest
+   return best_profit
 
 def max_subarray(nums):
-    # Outline:
-    #   ...
-    # TODO: return the largest sum of any contiguous (in-a-row) block of numbers in
-    #   `nums`. The list has at least one number.
-    pass
+    #   loop through the array to check what indexes are in order, keep track of the indexes, add them and freturn the sum
+    best_sum=nums[0]
+    for i in range (len(nums)): 
+        current_sum=0 
+        for j in range (i, len(nums)):
+            current_sum+=nums[j]
+            if current_sum>best_sum:
+                best_sum=current_sum
+    return best_sum
+    
 
 
 def is_balanced(s):   # Part 4 - stretch (optional)
